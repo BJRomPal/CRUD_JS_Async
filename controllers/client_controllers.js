@@ -9,7 +9,7 @@ const crearNuevaLinea = (nombre, email, id) => {
         <ul class="table__button-control">
           <li>
             <a
-              href="../screens/editar_cliente.html"
+              href="../screens/editar_cliente.html?id=${id}"
               class="simple-button simple-button--edit"
               >Editar</a
             >
@@ -24,9 +24,9 @@ const crearNuevaLinea = (nombre, email, id) => {
       </td>`
       linea.innerHTML = contenido;
       const btn = linea.querySelector("button");
-      btn.addEventListener("click", () => {
+      btn.addEventListener("click", async () => {
         const id = btn.id;
-        clientServices.eliminarCliente(id).then().catch(err => alert("ocurrio un error"));
+        await clientServices.eliminarCliente(id);
       });
       return linea;
   };
